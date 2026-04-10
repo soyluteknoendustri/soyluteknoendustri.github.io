@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soylu Tekno &amp; Endüstri</title>
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="brand">
+        <img src="logo.png" alt="Soylu Tekno Endüstri" class="nav-logo" />
+        <span class="brand-text">
+          <span class="brand-main">SOYLU</span>
+          <span class="brand-sub">TEKNO &amp; ENDÜSTRİ</span>
+        </span>
+      </a>
+      <nav class="nav-links">
+        <a href="#about"    data-i18n="nav.about">Hakkımızda</a>
+        <a href="#services" data-i18n="nav.services">Hizmetler</a>
+        <a href="#sectors"  data-i18n="nav.sectors">Sektörler</a>
+        <a href="#contact"  data-i18n="nav.contact">İletişim</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="lang-toggle" id="langToggle" aria-label="Switch language">
+          <span class="lang-active" id="langLabel">TR</span>
+          <span class="lang-divider">/</span>
+          <span class="lang-other" id="langOther">EN</span>
+        </button>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menü">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#about"    data-i18n="nav.about">Hakkımızda</a>
+      <a href="#services" data-i18n="nav.services">Hizmetler</a>
+      <a href="#sectors"  data-i18n="nav.sectors">Sektörler</a>
+      <a href="#contact"  data-i18n="nav.contact">İletişim</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-grid-bg"></div>
+    <div class="container hero-content">
+      <div class="hero-badge" data-i18n="hero.badge">Endüstriyel Çözüm Ortağı</div>
+      <h1 class="hero-title">
+        <span data-i18n="hero.title1">Madeni Yağ, Kimyasal</span><br />
+        <span class="hero-title-accent" data-i18n="hero.title2">&amp; Kurumsal Yazılım</span>
+      </h1>
+      <p class="hero-desc" data-i18n="hero.desc">
+        Madeni yağlar, metal işleme sıvıları ve kurumsal yazılım çözümleriyle endüstrinizin ihtiyaçlarına bütünleşik yanıt veriyoruz.
+      </p>
+      <div class="hero-cta">
+        <a href="#services" class="btn-primary" data-i18n="hero.cta1">Çözümleri Keşfet</a>
+        <a href="#contact"  class="btn-ghost"   data-i18n="hero.cta2">Teklif Al</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="container stats-inner">
+        <div class="stat">
+          <span class="stat-num">3</span>
+          <span class="stat-label" data-i18n="stat.areas">Ana Faaliyet Alanı</span>
+        </div>
+        <div class="stat-sep"></div>
+        <div class="stat">
+          <span class="stat-num">ISO</span>
+          <span class="stat-label" data-i18n="stat.quality">Kalite Odaklı</span>
+        </div>
+        <div class="stat-sep"></div>
+        <div class="stat">
+          <span class="stat-num">360°</span>
+          <span class="stat-label" data-i18n="stat.support">Teknik Destek</span>
+        </div>
+        <div class="stat-sep"></div>
+        <div class="stat">
+          <span class="stat-num">TR</span>
+          <span class="stat-label" data-i18n="stat.coverage">Türkiye Geneli</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HAKKIMIZDA -->
+  <section id="about" class="section about">
+    <div class="container about-grid">
+      <div class="about-visual">
+        <div class="about-card-main">
+          <img src="logo.png" alt="Soylu Tekno Endüstri" class="about-logo" />
+          <div class="about-tag-row">
+            <span class="about-card-tag tag-oil"  data-i18n="about.tag1">Madeni Yağlar</span>
+            <span class="about-card-tag tag-chem" data-i18n="about.tag2">Metal İşleme</span>
+            <span class="about-card-tag tag-soft" data-i18n="about.tag3">Kurumsal Yazılım</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-text">
+        <span class="label" data-i18n="nav.about">Hakkımızda</span>
+        <h2 data-i18n="about.title">Sektörün Güvenilir<br />Çözüm Ortağı</h2>
+        <p data-i18n="about.p1">
+          Soylu Tekno &amp; Endüstri; madeni yağlar, metal işleme sıvıları &amp; kimyasalları ve kurumsal yazılım olmak üzere üç ana alanda faaliyet gösteren, kalite ve güvenilirliği ön planda tutan bir endüstriyel çözüm firmasıdır.
+        </p>
+        <p data-i18n="about.p2">
+          Müşterilerimizin üretim süreçlerini optimize etmek, verimliliği artırmak ve dijital dönüşümlerini desteklemek için bütünleşik hizmet anlayışıyla çalışıyoruz.
+        </p>
+        <ul class="pill-list">
+          <li data-i18n="about.pill1">Yüksek performanslı ürün portföyü</li>
+          <li data-i18n="about.pill2">Saha &amp; uzaktan teknik destek</li>
+          <li data-i18n="about.pill3">Özelleştirilmiş yazılım çözümleri</li>
+          <li data-i18n="about.pill4">Hızlı teslimat &amp; lojistik</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- HİZMETLER / ÜRÜN ALANLARI -->
+  <section id="services" class="section services">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label" data-i18n="nav.services">Hizmetler</span>
+        <h2 data-i18n="services.title">Faaliyet Alanlarımız</h2>
+        <p class="section-sub" data-i18n="services.sub">Üç ana alanda uzman kadromuz ve ürün portföyümüzle hizmetinizdeyiz.</p>
+      </div>
+      <div class="service-blocks">
+
+        <!-- Madeni Yağlar -->
+        <div class="service-block">
+          <div class="sb-icon oil">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M32 8C32 8 14 26 14 38a18 18 0 0036 0C50 26 32 8 32 8z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+              <path d="M22 42a10 10 0 0014-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="sb-body">
+            <h3 data-i18n="s1.title">Madeni Yağlar</h3>
+            <p data-i18n="s1.desc">Motor yağları, şanzıman yağları, hidrolik yağlar, kompresör yağları ve özel uygulamalar için yüksek performanslı madeni yağ ürünleri.</p>
+            <ul class="sb-list">
+              <li data-i18n="s1.i1">Motor &amp; Şanzıman Yağları</li>
+              <li data-i18n="s1.i2">Hidrolik &amp; Kompresör Yağları</li>
+              <li data-i18n="s1.i3">Endüstriyel Dişli Yağları</li>
+              <li data-i18n="s1.i4">Gres &amp; Özel Yağlayıcılar</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Metal İşleme -->
+        <div class="service-block featured">
+          <div class="sb-badge" data-i18n="s2.badge">Öne Çıkan Alan</div>
+          <div class="sb-icon metal">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="28" width="44" height="8" rx="2" stroke="currentColor" stroke-width="2.5"/>
+              <path d="M20 28V20m8 8V16m8 12V20m8 8V16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M16 36v8m32-8v8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="sb-body">
+            <h3 data-i18n="s2.title">Metal İşleme Sıvıları &amp; Kimyasalları</h3>
+            <p data-i18n="s2.desc">Talaşlı imalat, şekillendirme ve yüzey işlemleri için özel formüle edilmiş kesme sıvıları, soğutma emülsiyonları ve endüstriyel kimyasallar.</p>
+            <ul class="sb-list">
+              <li data-i18n="s2.i1">Kesme &amp; Talaşlı İmalat Sıvıları</li>
+              <li data-i18n="s2.i2">Soğutma Emülsiyonları</li>
+              <li data-i18n="s2.i3">Çekme &amp; Şekillendirme Yağları</li>
+              <li data-i18n="s2.i4">Yüzey Temizleme Kimyasalları</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Kurumsal Yazılım -->
+        <div class="service-block">
+          <div class="sb-icon soft">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="12" width="48" height="34" rx="3" stroke="currentColor" stroke-width="2.5"/>
+              <path d="M22 52h20M32 46v6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M20 28l6 5-6 5M30 33h14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="sb-body">
+            <h3 data-i18n="s3.title">Kurumsal Yazılım</h3>
+            <p data-i18n="s3.desc">İşletmenizin dijital dönüşümünü hızlandıracak ERP entegrasyonları, üretim takip sistemleri ve sektöre özel yazılım geliştirme hizmetleri.</p>
+            <ul class="sb-list">
+              <li data-i18n="s3.i1">ERP Entegrasyon &amp; Danışmanlık</li>
+              <li data-i18n="s3.i2">Üretim &amp; Stok Takip Sistemleri</li>
+              <li data-i18n="s3.i3">Müşteri &amp; Sipariş Yönetimi</li>
+              <li data-i18n="s3.i4">Özel Yazılım Geliştirme</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SEKTÖRLER -->
+  <section id="sectors" class="section sectors">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label" data-i18n="nav.sectors">Sektörler</span>
+        <h2 data-i18n="sectors.title">Hizmet Verdiğimiz Sektörler</h2>
+      </div>
+      <div class="sectors-grid">
+        <div class="sector-item"><span data-i18n="sec.auto">Otomotiv</span></div>
+        <div class="sector-item"><span data-i18n="sec.mfg">İmalat Sanayi</span></div>
+        <div class="sector-item"><span data-i18n="sec.energy">Enerji &amp; Petrokimya</span></div>
+        <div class="sector-item"><span data-i18n="sec.machine">Makine İmalatı</span></div>
+        <div class="sector-item"><span data-i18n="sec.steel">Demir &amp; Çelik</span></div>
+        <div class="sector-item"><span data-i18n="sec.defense">Savunma Sanayi</span></div>
+        <div class="sector-item"><span data-i18n="sec.food">Gıda &amp; İlaç</span></div>
+        <div class="sector-item"><span data-i18n="sec.textile">Tekstil Makineleri</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- İLETİŞİM -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label" data-i18n="nav.contact">İletişim</span>
+        <h2 data-i18n="contact.title">Bizimle İletişime Geçin</h2>
+        <p class="section-sub" data-i18n="contact.sub">Ürün bilgisi, teklif ve teknik destek için ekibimiz hazır.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="cinfo-item">
+            <div class="cinfo-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.08 2.86 2 2 0 012.06 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <span class="cinfo-label" data-i18n="contact.phone">Telefon</span>
+              <span class="cinfo-val">+90 (540) 971 11 41</span>
+            </div>
+          </div>
+          <div class="cinfo-item">
+            <div class="cinfo-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.8"/><polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <span class="cinfo-label" data-i18n="contact.email">E-posta</span>
+              <span class="cinfo-val">murat.soylu@soyluteknoendustri.com</span>
+            </div>
+          </div>
+          <div class="cinfo-item">
+            <div class="cinfo-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.8"/></svg>
+            </div>
+            <div>
+              <span class="cinfo-label" data-i18n="contact.address">Adres</span>
+              <span class="cinfo-val" data-i18n="contact.address.val">Türkiye</span>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname" data-i18n="form.name">Ad Soyad</label>
+              <input type="text" id="fname" name="name" data-i18n-placeholder="form.name.ph" placeholder="Adınız Soyadınız" required />
+            </div>
+            <div class="form-group">
+              <label for="fcompany" data-i18n="form.company">Firma</label>
+              <input type="text" id="fcompany" name="company" data-i18n-placeholder="form.company.ph" placeholder="Firma Adı" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="femail" data-i18n="form.email">E-posta</label>
+            <input type="email" id="femail" name="email" data-i18n-placeholder="form.email.ph" placeholder="ornek@firma.com" required />
+          </div>
+          <div class="form-group">
+            <label for="fsubject" data-i18n="form.subject">Konu</label>
+            <select id="fsubject" name="subject">
+              <option value="" data-i18n="form.subject.ph">Konu Seçiniz</option>
+              <option value="oil"  data-i18n="form.sub.oil">Madeni Yağlar</option>
+              <option value="metal" data-i18n="form.sub.metal">Metal İşleme Sıvıları</option>
+              <option value="soft" data-i18n="form.sub.soft">Kurumsal Yazılım</option>
+              <option value="other" data-i18n="form.sub.other">Diğer</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="fmsg" data-i18n="form.msg">Mesaj</label>
+            <textarea id="fmsg" name="message" rows="4" data-i18n-placeholder="form.msg.ph" placeholder="Mesajınızı buraya yazınız..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary full" data-i18n="form.send">Gönder</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Logo" class="footer-logo" />
+        <div>
+          <span class="footer-name">SOYLU</span>
+          <span class="footer-sub">TEKNO &amp; ENDÜSTRİ</span>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="#about"    data-i18n="nav.about">Hakkımızda</a>
+        <a href="#services" data-i18n="nav.services">Hizmetler</a>
+        <a href="#contact"  data-i18n="nav.contact">İletişim</a>
+      </div>
+      <span class="footer-copy" data-i18n="footer.copy">&copy; 2026 Soylu Tekno &amp; Endüstri. Tüm hakları saklıdır.</span>
+    </div>
+  </footer>
+
+  <script src="i18n.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
