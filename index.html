@@ -27,6 +27,8 @@
         <a href="#about"    data-i18n="nav.about">Hakkımızda</a>
         <a href="#services" data-i18n="nav.services">Hizmetler</a>
         <a href="#sectors"  data-i18n="nav.sectors">Sektörler</a>
+        <a href="products/index.html" data-i18n="nav.products">Ürünler</a>
+        <a href="blog/index.html"     data-i18n="nav.blog">Blog</a>
         <a href="#contact"  data-i18n="nav.contact">İletişim</a>
       </nav>
       <div class="nav-actions">
@@ -45,6 +47,8 @@
       <a href="#about"    data-i18n="nav.about">Hakkımızda</a>
       <a href="#services" data-i18n="nav.services">Hizmetler</a>
       <a href="#sectors"  data-i18n="nav.sectors">Sektörler</a>
+      <a href="products/index.html" data-i18n="nav.products">Ürünler</a>
+      <a href="blog/index.html"     data-i18n="nav.blog">Blog</a>
       <a href="#contact"  data-i18n="nav.contact">İletişim</a>
     </div>
   </header>
@@ -237,7 +241,7 @@
             </div>
             <div>
               <span class="cinfo-label" data-i18n="contact.phone">Telefon</span>
-              <span class="cinfo-val">+90 (540) 971 11 41</span>
+              <span class="cinfo-val" id="cinfoPhone">+90 (540) 971 11 41</span>
             </div>
           </div>
           <div class="cinfo-item">
@@ -246,7 +250,7 @@
             </div>
             <div>
               <span class="cinfo-label" data-i18n="contact.email">E-posta</span>
-              <span class="cinfo-val">murat.soylu@soyluteknoendustri.com</span>
+              <span class="cinfo-val" id="cinfoEmail">murat.soylu@soyluteknoendustri.com</span>
             </div>
           </div>
           <div class="cinfo-item">
@@ -255,9 +259,10 @@
             </div>
             <div>
               <span class="cinfo-label" data-i18n="contact.address">Adres</span>
-              <span class="cinfo-val" data-i18n="contact.address.val">Türkiye</span>
+              <span class="cinfo-val" id="cinfoAddress">Türkiye</span>
             </div>
           </div>
+          <div class="social-links" id="socialLinks"></div>
         </div>
         <form class="contact-form" id="contactForm">
           <div class="form-row">
@@ -307,6 +312,8 @@
       <div class="footer-links">
         <a href="#about"    data-i18n="nav.about">Hakkımızda</a>
         <a href="#services" data-i18n="nav.services">Hizmetler</a>
+        <a href="products/index.html" data-i18n="nav.products">Ürünler</a>
+        <a href="blog/index.html"     data-i18n="nav.blog">Blog</a>
         <a href="#contact"  data-i18n="nav.contact">İletişim</a>
       </div>
       <span class="footer-copy" data-i18n="footer.copy">&copy; 2026 Soylu Tekno &amp; Endüstri. Tüm hakları saklıdır.</span>
@@ -314,6 +321,11 @@
   </footer>
 
   <script src="i18n.js"></script>
+  <script src="assets/js/nav.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/supabase-client.js"></script>
+  <script src="assets/js/public-contact.js"></script>
   <script src="main.js"></script>
 </body>
 </html>

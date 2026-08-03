@@ -1,0 +1,298 @@
+/* ===================================================
+   BLOG & ÜRÜN KATALOĞU — paylaşılan stiller
+   style.css'in :root değişkenlerine bağımlıdır.
+   =================================================== */
+
+/* ---- Sayfa başlığı (blog/ürün liste ve detay sayfaları) ---- */
+.page-header {
+  background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 55%, #1a3060 100%);
+  padding: 152px 0 64px;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 30%, transparent 100%);
+}
+.page-header-inner { position: relative; z-index: 1; text-align: center; }
+.page-header .label { color: var(--orange); }
+.page-header h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.page-header p {
+  color: var(--silver-l);
+  max-width: 540px;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.7;
+  opacity: .9;
+}
+
+/* ---- Blog & ürün liste bölümü ---- */
+.catalog-section { background: var(--bg); padding: 80px 0; }
+
+.empty-state {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 60px 0;
+  font-size: .95rem;
+}
+
+/* ---- Blog kartları ---- */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 28px;
+}
+
+.blog-card {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+.blog-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(19,30,48,.1);
+  border-color: rgba(224,120,32,.3);
+}
+.blog-card-cover {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  object-fit: cover;
+  background: var(--navy-light);
+}
+.blog-card-body { padding: 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.blog-card-date {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: .68rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--silver);
+}
+.blog-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--navy);
+  line-height: 1.35;
+}
+.blog-card p {
+  font-size: .88rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  flex: 1;
+}
+.blog-card-link {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: .8rem;
+  color: var(--orange);
+  margin-top: 4px;
+}
+
+/* ---- Blog detay ---- */
+.post-content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 64px 0;
+}
+.post-content h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+.post-date {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: .72rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--silver);
+  margin-bottom: 28px;
+  display: block;
+}
+.post-cover {
+  width: 100%;
+  border-radius: 14px;
+  margin-bottom: 32px;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+.post-body { color: var(--text); font-size: 1rem; line-height: 1.8; }
+.post-body p { margin-bottom: 18px; }
+.post-body h2, .post-body h3 { font-family: 'Montserrat', sans-serif; color: var(--navy); margin: 28px 0 14px; }
+.post-body img { border-radius: 10px; margin: 20px 0; }
+.post-body a { color: var(--orange); text-decoration: underline; }
+.post-back {
+  display: inline-block;
+  margin-bottom: 24px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: .8rem;
+  color: var(--orange);
+}
+
+.attachments { margin-top: 40px; display: flex; flex-direction: column; gap: 12px; }
+.attachments h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: .78rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.attachment-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  transition: border-color var(--transition), background var(--transition);
+}
+.attachment-item:hover { border-color: rgba(224,120,32,.3); background: var(--white); }
+.attachment-icon {
+  width: 38px; height: 38px;
+  border-radius: 8px;
+  background: rgba(224,120,32,.12);
+  color: var(--orange);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.attachment-icon svg { width: 20px; height: 20px; }
+.attachment-name { font-weight: 600; font-size: .88rem; color: var(--text); flex: 1; }
+.attachment-download { font-weight: 700; font-size: .78rem; color: var(--orange); }
+
+/* ---- Ürün kategori filtresi ---- */
+.category-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 44px;
+}
+.category-pill {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: .78rem;
+  letter-spacing: .06em;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+.category-pill:hover { border-color: rgba(224,120,32,.3); color: var(--orange); }
+.category-pill.active {
+  background: linear-gradient(135deg, var(--orange), var(--orange-h));
+  border-color: transparent;
+  color: var(--white);
+}
+
+/* ---- Ürün kartları ---- */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+.product-card {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(19,30,48,.1);
+  border-color: rgba(224,120,32,.3);
+}
+.product-card-img {
+  aspect-ratio: 4/3;
+  width: 100%;
+  object-fit: cover;
+  background: var(--navy-light);
+}
+.product-card-body { padding: 20px; display: flex; flex-direction: column; gap: 8px; }
+.product-badge {
+  align-self: flex-start;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: .62rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+.product-badge.oil      { background: #fff5eb; color: var(--orange); }
+.product-badge.metal    { background: #fff5eb; color: var(--orange-h); }
+.product-badge.software { background: #edf5f0; color: #1e8c4f; }
+.product-card h3 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; color: var(--navy); }
+.product-card p  { font-size: .85rem; color: var(--text-muted); line-height: 1.6; }
+
+/* ---- Ürün detay ---- */
+.product-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+.product-gallery-main {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 14px;
+  background: var(--navy-light);
+  margin-bottom: 14px;
+}
+.product-gallery-thumbs { display: flex; gap: 10px; flex-wrap: wrap; }
+.product-gallery-thumbs img {
+  width: 72px; height: 72px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color var(--transition);
+}
+.product-gallery-thumbs img.active { border-color: var(--orange); }
+.product-info h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  color: var(--navy);
+  margin: 12px 0 16px;
+}
+.product-info .product-desc { color: var(--text-muted); font-size: .97rem; line-height: 1.75; margin-bottom: 24px; }
+.product-back {
+  display: inline-block;
+  margin-bottom: 24px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: .8rem;
+  color: var(--orange);
+}
+
+@media (max-width: 720px) {
+  .page-header { padding: 128px 0 48px; }
+  .post-content { padding: 40px 0; }
+  .product-detail { grid-template-columns: 1fr; gap: 32px; }
+}
