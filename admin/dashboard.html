@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel — Soylu Tekno &amp; Endüstri</title>
+  <link rel="icon" type="image/png" href="../logo.png" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="admin.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body class="admin-body">
+
+  <div class="admin-topbar">
+    <a href="dashboard.html" class="brand">
+      <img src="../logo.png" alt="Logo" style="height:36px;" />
+      <span class="brand-text"><span class="brand-main" style="font-size:.9rem;">ADMIN PANEL</span></span>
+    </a>
+    <nav class="admin-topbar-nav">
+      <a href="dashboard.html">Genel Bakış</a>
+      <a href="posts.html">Blog Yazıları</a>
+      <a href="products.html">Ürünler</a>
+      <a href="settings.html">İletişim Bilgileri</a>
+      <a href="../index.html" target="_blank">Siteyi Görüntüle ↗</a>
+    </nav>
+    <button class="admin-logout" id="logoutBtn">Çıkış Yap</button>
+  </div>
+
+  <main class="admin-main">
+    <h2>Genel Bakış</h2>
+    <div class="admin-stats">
+      <div class="admin-stat-card">
+        <div class="num" id="publishedPostsCount">—</div>
+        <div class="lbl">Yayınlanmış Blog Yazısı</div>
+      </div>
+      <div class="admin-stat-card">
+        <div class="num" id="draftPostsCount">—</div>
+        <div class="lbl">Taslak Blog Yazısı</div>
+      </div>
+      <div class="admin-stat-card">
+        <div class="num" id="publishedProductsCount">—</div>
+        <div class="lbl">Yayınlanmış Ürün</div>
+      </div>
+      <div class="admin-stat-card">
+        <div class="num" id="draftProductsCount">—</div>
+        <div class="lbl">Taslak Ürün</div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/supabase-client.js"></script>
+  <script src="admin-auth.js"></script>
+  <script>
+    async function loadStats() {
+      const [{ data: posts }, { data: products }] = await Promise.all([
+        sb.from("blog_posts").select("published"),
+        sb.from("products").select("published")
+      ]);
+      const p = posts || [];
+      const pr = products || [];
+      document.getElementById("publishedPostsCount").textContent = p.filter(x => x.published).length;
+      document.getElementById("draftPostsCount").textContent = p.filter(x => !x.published).length;
+      document.getElementById("publishedProductsCount").textContent = pr.filter(x => x.published).length;
+      document.getElementById("draftProductsCount").textContent = pr.filter(x => !x.published).length;
+    }
+    document.addEventListener("DOMContentLoaded", loadStats);
+  </script>
+</body>
+</html>

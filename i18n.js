@@ -3,6 +3,8 @@ const translations = {
     "nav.about":    "Hakkımızda",
     "nav.services": "Hizmetler",
     "nav.sectors":  "Sektörler",
+    "nav.blog":     "Blog",
+    "nav.products": "Ürünler",
     "nav.contact":  "İletişim",
 
     "hero.badge":  "Endüstriyel Çözüm Ortağı",
@@ -86,6 +88,23 @@ const translations = {
     "form.msg.ph":     "Mesajınızı buraya yazınız...",
     "form.send":       "Gönder",
 
+    "blog.pagetitle":    "Blog",
+    "blog.pagesub":      "Sektörel gelişmeler, ürün duyuruları ve teknik içerikler.",
+    "blog.readmore":     "Devamını Oku",
+    "blog.attachments":  "Ekler",
+    "blog.back":         "Bloga Dön",
+    "blog.empty":        "Henüz yayınlanmış bir yazı yok.",
+
+    "products.pagetitle": "Ürün Kataloğu",
+    "products.pagesub":   "Faaliyet alanlarımıza göre ürün portföyümüz.",
+    "products.filter.all":      "Tümü",
+    "products.filter.oil":     "Madeni Yağlar",
+    "products.filter.metal":   "Metal İşleme",
+    "products.filter.software":"Kurumsal Yazılım",
+    "products.datasheet": "Teknik Doküman İndir",
+    "products.back":      "Kataloğa Dön",
+    "products.empty":     "Bu kategoride henüz ürün yok.",
+
     "footer.copy": "© 2026 Soylu Tekno & Endüstri. Tüm hakları saklıdır."
   },
 
@@ -93,6 +112,8 @@ const translations = {
     "nav.about":    "About Us",
     "nav.services": "Services",
     "nav.sectors":  "Sectors",
+    "nav.blog":     "Blog",
+    "nav.products": "Products",
     "nav.contact":  "Contact",
 
     "hero.badge":  "Industrial Solution Partner",
@@ -176,6 +197,23 @@ const translations = {
     "form.msg.ph":     "Write your message here...",
     "form.send":       "Send Message",
 
+    "blog.pagetitle":    "Blog",
+    "blog.pagesub":      "Industry news, product announcements and technical content.",
+    "blog.readmore":     "Read More",
+    "blog.attachments":  "Attachments",
+    "blog.back":         "Back to Blog",
+    "blog.empty":        "No posts published yet.",
+
+    "products.pagetitle": "Product Catalog",
+    "products.pagesub":   "Our product portfolio across our core business areas.",
+    "products.filter.all":      "All",
+    "products.filter.oil":     "Mineral Oils",
+    "products.filter.metal":   "Metalworking",
+    "products.filter.software":"Enterprise Software",
+    "products.datasheet": "Download Datasheet",
+    "products.back":      "Back to Catalog",
+    "products.empty":     "No products in this category yet.",
+
     "footer.copy": "© 2026 Soylu Tekno & Endüstri. All rights reserved."
   }
 };
@@ -206,6 +244,8 @@ function applyLang(lang) {
   document.title = lang === "tr"
     ? "Soylu Tekno & Endüstri"
     : "Soylu Tekno & Endüstri";
+
+  window.dispatchEvent(new CustomEvent("langchange", { detail: { lang } }));
 }
 
 document.addEventListener("DOMContentLoaded", () => {

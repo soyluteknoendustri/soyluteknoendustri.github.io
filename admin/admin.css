@@ -1,0 +1,178 @@
+/* ===================================================
+   ADMIN — sade, işlevsel panel stili
+   style.css'in :root değişkenlerine bağımlıdır.
+   =================================================== */
+
+body.admin-body {
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+/* ---- Login ---- */
+.admin-login-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 55%, #1a3060 100%);
+  padding: 24px;
+}
+.admin-login-card {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 40px 36px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.3);
+}
+.admin-login-card img { height: 44px; margin: 0 auto 20px; }
+.admin-login-card h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: var(--navy);
+  text-align: center;
+  margin-bottom: 24px;
+}
+.admin-error {
+  color: #c0392b;
+  font-size: .85rem;
+  margin-top: 4px;
+  min-height: 1.2em;
+}
+
+/* ---- Dashboard shell ---- */
+.admin-topbar {
+  background: var(--navy);
+  padding: 0 28px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.admin-topbar .brand-text .brand-main { color: var(--white); }
+.admin-topbar-nav { display: flex; gap: 24px; }
+.admin-topbar-nav a {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: .85rem;
+  color: var(--silver-l);
+}
+.admin-topbar-nav a:hover, .admin-topbar-nav a.active { color: var(--orange); }
+.admin-logout {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: .8rem;
+  color: var(--silver-l);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 6px;
+  padding: 8px 16px;
+}
+.admin-logout:hover { color: var(--white); border-color: var(--orange); }
+
+.admin-main { max-width: 1120px; margin: 0 auto; padding: 40px 28px 80px; }
+.admin-main h2 { font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--navy); margin-bottom: 24px; }
+
+.admin-stats { display: flex; gap: 20px; flex-wrap: wrap; }
+.admin-stat-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 28px;
+  flex: 1;
+  min-width: 180px;
+}
+.admin-stat-card .num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2rem; color: var(--orange); }
+.admin-stat-card .lbl { font-size: .82rem; color: var(--text-muted); }
+
+/* ---- Layout: liste solda, form sağda ---- */
+.admin-layout { display: grid; grid-template-columns: 340px 1fr; gap: 28px; align-items: start; }
+
+.admin-list { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.admin-list-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+.admin-list-header h3 { font-family: 'Montserrat', sans-serif; font-size: .95rem; color: var(--navy); }
+.btn-small {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: .75rem;
+  color: var(--white);
+  background: var(--orange);
+  padding: 7px 14px;
+  border-radius: 6px;
+}
+.admin-list-items { max-height: 640px; overflow-y: auto; }
+.admin-list-item {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.admin-list-item:hover { background: var(--bg); }
+.admin-list-item.active { background: rgba(224,120,32,.08); border-left: 3px solid var(--orange); }
+.admin-list-item .title { font-weight: 700; font-size: .88rem; color: var(--text); }
+.admin-list-item .meta { font-size: .72rem; color: var(--text-muted); display: flex; gap: 8px; align-items: center; }
+.status-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+.status-dot.published { background: #1e8c4f; }
+.status-dot.draft { background: var(--silver); }
+
+.admin-form { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 28px; }
+.admin-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.admin-form .form-group { margin-bottom: 16px; }
+/* style.css'teki .form-group input{appearance:none} kuralı checkbox'ları görünmez
+   kılıyor (işaretli/işaretsiz ayrımı kayboluyor) — burada native görünüme geri döndürülür. */
+.form-group input[type="checkbox"] {
+  appearance: auto;
+  width: auto;
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+.admin-form-actions { display: flex; gap: 12px; margin-top: 20px; align-items: center; }
+.btn-danger {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: .8rem;
+  color: #c0392b;
+  padding: 12px 20px;
+  border: 1.5px solid rgba(192,57,43,.3);
+  border-radius: 6px;
+}
+.btn-danger:hover { background: rgba(192,57,43,.08); }
+
+.lang-tabs { display: flex; gap: 8px; margin-bottom: 14px; }
+.lang-tab {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: .75rem;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1.5px solid var(--border);
+  color: var(--text-muted);
+}
+.lang-tab.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+.lang-pane { display: none; }
+.lang-pane.active { display: block; }
+
+.editor-box { border: 1.5px solid rgba(19,30,48,.12); border-radius: 7px; background: var(--white); }
+.editor-box .ql-container { min-height: 200px; font-family: 'Inter', sans-serif; }
+
+.upload-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+.upload-thumb { width: 60px; height: 60px; object-fit: cover; border-radius: 6px; border: 1px solid var(--border); }
+.file-chip {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
+  padding: 6px 12px; font-size: .8rem;
+}
+.file-chip button { color: #c0392b; font-weight: 700; }
+
+.status-msg { font-size: .82rem; margin-top: 10px; }
+.status-msg.ok { color: #1e8c4f; }
+.status-msg.err { color: #c0392b; }
+
+@media (max-width: 900px) {
+  .admin-layout { grid-template-columns: 1fr; }
+  .admin-form-row { grid-template-columns: 1fr; }
+}

@@ -1,46 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // Navbar scroll effect
-  const navbar = document.getElementById("navbar");
-  window.addEventListener("scroll", () => {
-    navbar.classList.toggle("scrolled", window.scrollY > 40);
-  });
-
-  // Hamburger menu
-  const hamburger = document.getElementById("hamburger");
-  const mobileMenu = document.getElementById("mobileMenu");
-  hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("open");
-    mobileMenu.classList.toggle("open");
-  });
-  mobileMenu.querySelectorAll("a").forEach(a => {
-    a.addEventListener("click", () => {
-      hamburger.classList.remove("open");
-      mobileMenu.classList.remove("open");
-    });
-  });
-
-  // Scroll-reveal
-  const revealEls = document.querySelectorAll(
-    ".service-block, .about-grid, .sector-item, .contact-grid, .stat"
-  );
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add("visible");
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  revealEls.forEach(el => {
-    el.classList.add("reveal");
-    observer.observe(el);
-  });
-
-  // Contact form — Formspree
-  // Formspree endpoint'ini buraya yapıştır:
-  const FORMSPREE_ENDPOINT = "https://formspree.io/f/xzdkljpz";
-
+  // Contact form — Formspree (FORMSPREE_ENDPOINT assets/js/config.js'te tanımlı)
   document.getElementById("contactForm").addEventListener("submit", async (e) => {
     e.preventDefault();
     const form = e.target;

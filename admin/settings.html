@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>İletişim Bilgileri — Admin Panel</title>
+  <link rel="icon" type="image/png" href="../logo.png" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="admin.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body class="admin-body">
+
+  <div class="admin-topbar">
+    <a href="dashboard.html" class="brand">
+      <img src="../logo.png" alt="Logo" style="height:36px;" />
+      <span class="brand-text"><span class="brand-main" style="font-size:.9rem;">ADMIN PANEL</span></span>
+    </a>
+    <nav class="admin-topbar-nav">
+      <a href="dashboard.html">Genel Bakış</a>
+      <a href="posts.html">Blog Yazıları</a>
+      <a href="products.html">Ürünler</a>
+      <a href="settings.html" class="active">İletişim Bilgileri</a>
+      <a href="../index.html" target="_blank">Siteyi Görüntüle ↗</a>
+    </nav>
+    <button class="admin-logout" id="logoutBtn">Çıkış Yap</button>
+  </div>
+
+  <main class="admin-main">
+    <h2>İletişim Bilgileri</h2>
+    <div class="admin-form" style="max-width:640px;">
+      <div class="admin-form-row">
+        <div class="form-group">
+          <label>Telefon</label>
+          <input type="text" id="phone" />
+        </div>
+        <div class="form-group">
+          <label>E-posta</label>
+          <input type="email" id="email" />
+        </div>
+      </div>
+
+      <div class="admin-form-row">
+        <div class="form-group">
+          <label>Adres (TR)</label>
+          <input type="text" id="addressTr" />
+        </div>
+        <div class="form-group">
+          <label>Address (EN)</label>
+          <input type="text" id="addressEn" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>LinkedIn URL</label>
+        <input type="url" id="socialLinkedin" placeholder="https://linkedin.com/company/..." />
+      </div>
+      <div class="form-group">
+        <label>Instagram URL</label>
+        <input type="url" id="socialInstagram" placeholder="https://instagram.com/..." />
+      </div>
+      <div class="form-group">
+        <label>Facebook URL</label>
+        <input type="url" id="socialFacebook" placeholder="https://facebook.com/..." />
+      </div>
+      <div class="form-group">
+        <label>X (Twitter) URL</label>
+        <input type="url" id="socialX" placeholder="https://x.com/..." />
+      </div>
+
+      <div class="admin-form-actions">
+        <button type="button" class="btn-primary" id="saveBtn">Kaydet</button>
+      </div>
+      <div class="status-msg" id="statusMsg"></div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/supabase-client.js"></script>
+  <script src="admin-auth.js"></script>
+  <script src="admin-settings.js"></script>
+</body>
+</html>

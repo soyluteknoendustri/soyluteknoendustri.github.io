@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ürünler — Admin Panel</title>
+  <link rel="icon" type="image/png" href="../logo.png" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="admin.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.snow.css" rel="stylesheet" />
+</head>
+<body class="admin-body">
+
+  <div class="admin-topbar">
+    <a href="dashboard.html" class="brand">
+      <img src="../logo.png" alt="Logo" style="height:36px;" />
+      <span class="brand-text"><span class="brand-main" style="font-size:.9rem;">ADMIN PANEL</span></span>
+    </a>
+    <nav class="admin-topbar-nav">
+      <a href="dashboard.html">Genel Bakış</a>
+      <a href="posts.html">Blog Yazıları</a>
+      <a href="products.html" class="active">Ürünler</a>
+      <a href="settings.html">İletişim Bilgileri</a>
+      <a href="../index.html" target="_blank">Siteyi Görüntüle ↗</a>
+    </nav>
+    <button class="admin-logout" id="logoutBtn">Çıkış Yap</button>
+  </div>
+
+  <main class="admin-main">
+    <h2>Ürünler</h2>
+    <div class="admin-layout">
+
+      <div class="admin-list">
+        <div class="admin-list-header">
+          <h3>Ürünler</h3>
+          <button class="btn-small" id="newProductBtn">+ Yeni Ürün</button>
+        </div>
+        <div class="admin-list-items" id="productList"></div>
+      </div>
+
+      <div class="admin-form">
+        <div class="lang-tabs">
+          <button type="button" class="lang-tab active" data-lang="tr">Türkçe</button>
+          <button type="button" class="lang-tab" data-lang="en">English</button>
+        </div>
+
+        <div class="lang-pane active" data-lang-pane="tr">
+          <div class="form-group">
+            <label>Ad (TR)</label>
+            <input type="text" id="nameTr" />
+          </div>
+          <div class="form-group">
+            <label>Kısa Açıklama (TR)</label>
+            <input type="text" id="shortDescTr" />
+          </div>
+          <div class="form-group">
+            <label>Detaylı Açıklama (TR)</label>
+            <div class="editor-box"><div id="editorTr"></div></div>
+          </div>
+        </div>
+
+        <div class="lang-pane" data-lang-pane="en">
+          <div class="form-group">
+            <label>Name (EN)</label>
+            <input type="text" id="nameEn" />
+          </div>
+          <div class="form-group">
+            <label>Short Description (EN)</label>
+            <input type="text" id="shortDescEn" />
+          </div>
+          <div class="form-group">
+            <label>Detailed Description (EN)</label>
+            <div class="editor-box"><div id="editorEn"></div></div>
+          </div>
+        </div>
+
+        <div class="admin-form-row">
+          <div class="form-group">
+            <label>Slug (URL)</label>
+            <input type="text" id="slug" />
+          </div>
+          <div class="form-group">
+            <label>Kategori</label>
+            <select id="category">
+              <option value="oil">Madeni Yağlar</option>
+              <option value="metal">Metal İşleme</option>
+              <option value="software">Kurumsal Yazılım</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="admin-form-row">
+          <div class="form-group">
+            <label>Sıra No</label>
+            <input type="number" id="sortOrder" value="0" />
+          </div>
+          <div class="form-group">
+            <label style="display:flex;align-items:center;gap:8px;margin-top:20px;">
+              <input type="checkbox" id="published" style="width:auto;" /> Yayınla
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Görseller (birden fazla eklenebilir, ilki kapak olur)</label>
+          <div class="upload-row" id="imageList"></div>
+          <input type="file" id="imageInput" accept="image/*" />
+        </div>
+
+        <div class="form-group">
+          <label>Teknik Doküman (opsiyonel, PDF/PPT)</label>
+          <div class="upload-row" id="datasheetRow"></div>
+          <input type="file" id="datasheetInput" accept=".pdf,.ppt,.pptx" />
+        </div>
+
+        <div class="admin-form-actions">
+          <button type="button" class="btn-primary" id="saveBtn">Kaydet</button>
+          <button type="button" class="btn-danger" id="deleteBtn" style="display:none;">Sil</button>
+        </div>
+        <div class="status-msg" id="statusMsg"></div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/supabase-client.js"></script>
+  <script src="admin-auth.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.js"></script>
+  <script src="admin-products.js"></script>
+</body>
+</html>

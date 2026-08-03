@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Soylu Tekno &amp; Endüstri</title>
+  <link rel="icon" type="image/png" href="../logo.png" />
+  <link rel="apple-touch-icon" href="../logo.png" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../catalog.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="../index.html" class="brand">
+        <img src="../logo.png" alt="Soylu Tekno Endüstri" class="nav-logo" />
+        <span class="brand-text">
+          <span class="brand-main">SOYLU</span>
+          <span class="brand-sub">TEKNO &amp; ENDÜSTRİ</span>
+        </span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html#about"    data-i18n="nav.about">Hakkımızda</a>
+        <a href="../index.html#services" data-i18n="nav.services">Hizmetler</a>
+        <a href="../products/index.html" data-i18n="nav.products">Ürünler</a>
+        <a href="index.html"             data-i18n="nav.blog">Blog</a>
+        <a href="../index.html#contact"  data-i18n="nav.contact">İletişim</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="lang-toggle" id="langToggle" aria-label="Switch language">
+          <span class="lang-active" id="langLabel">TR</span>
+          <span class="lang-divider">/</span>
+          <span class="lang-other" id="langOther">EN</span>
+        </button>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menü">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="../index.html#about"    data-i18n="nav.about">Hakkımızda</a>
+      <a href="../index.html#services" data-i18n="nav.services">Hizmetler</a>
+      <a href="../products/index.html" data-i18n="nav.products">Ürünler</a>
+      <a href="index.html"             data-i18n="nav.blog">Blog</a>
+      <a href="../index.html#contact"  data-i18n="nav.contact">İletişim</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="post-content">
+      <a href="index.html" class="post-back" data-i18n="blog.back">Bloga Dön</a>
+      <div id="postRoot"></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="../logo.png" alt="Logo" class="footer-logo" />
+        <div>
+          <span class="footer-name">SOYLU</span>
+          <span class="footer-sub">TEKNO &amp; ENDÜSTRİ</span>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html#about"    data-i18n="nav.about">Hakkımızda</a>
+        <a href="../products/index.html" data-i18n="nav.products">Ürünler</a>
+        <a href="../index.html#contact"  data-i18n="nav.contact">İletişim</a>
+      </div>
+      <span class="footer-copy" data-i18n="footer.copy">&copy; 2026 Soylu Tekno &amp; Endüstri. Tüm hakları saklıdır.</span>
+    </div>
+  </footer>
+
+  <script src="../i18n.js"></script>
+  <script src="../assets/js/nav.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/supabase-client.js"></script>
+  <script src="../assets/js/lang-content.js"></script>
+  <script src="post.js"></script>
+</body>
+</html>
