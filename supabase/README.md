@@ -58,3 +58,16 @@ bucket policy'leri" başlığına kadar olan kısmı) çalıştırman yeterli.
 > olsa da, `create trigger` ve `create policy` ifadeleri `IF NOT EXISTS` desteklemez —
 > daha önce oluşturulmuş bir trigger/policy'yi tekrar oluşturmaya çalışmak hataya sebep
 > olur. Şema her güncellendiğinde sadece o güncellemeye ait yeni SQL bloğunu çalıştır.
+
+## Ek: Stok & Cari Yönetimi modülü
+
+`admin/stock-*.html` sayfalarının çalışması için `supabase/migrations/0001_stok_cari.sql`
+dosyasının **tamamını** SQL Editor'de çalıştır (bu dosya `schema.sql`'in sonuna da eklendi;
+projeyi sıfırdan kuruyorsan tek `schema.sql`'i çalıştırman yeterli, migration'ı ayrıca
+çalıştırma). Bu, şu tabloları oluşturur: `stock_products`, `stock_accounts`,
+`stock_transactions`, `stock_unbilled_movements`, `stock_settings`, `stock_audit_log` —
+stok/bakiye alanları trigger'larla otomatik hesaplanır, denetim kaydı otomatik tutulur.
+
+Ardından **Storage**'da yeni bir **Public** bucket oluştur: `stock-media` (şirket logosu için).
+
+Bu modül herkese açık değildir — sadece admin (authenticated) erişebilir, `anon` policy'si yoktur.

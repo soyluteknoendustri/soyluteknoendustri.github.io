@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel — Stok &amp; Cari</title>
+  <link rel="icon" type="image/png" href="../logo.png" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="admin.css" />
+  <link rel="stylesheet" href="stock.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body class="admin-body" data-stock-page="dashboard">
+
+  <div class="admin-topbar">
+    <a href="stock-dashboard.html" class="brand">
+      <img src="../logo.png" alt="Logo" style="height:36px;" />
+      <span class="brand-text"><span class="brand-main" style="font-size:.9rem;">STOK &amp; CARİ</span></span>
+    </a>
+    <nav class="admin-topbar-nav">
+      <a href="dashboard.html">← Admin Panel</a>
+    </nav>
+    <button class="admin-logout" id="logoutBtn">Çıkış Yap</button>
+  </div>
+
+  <div class="stock-shell">
+    <aside class="stock-sidebar" id="stockSidebar"></aside>
+    <main class="stock-content">
+      <div class="stock-content-header">
+        <div>
+          <h2>Panel</h2>
+          <p>Bugünkü mali görünüm</p>
+        </div>
+      </div>
+
+      <div class="stock-stats">
+        <div class="stock-stat-card">
+          <div class="stock-stat-icon">₺</div>
+          <div><div class="lbl">Müşteri Borcu</div><div class="num" id="statMusteriBorcu">—</div></div>
+        </div>
+        <div class="stock-stat-card">
+          <div class="stock-stat-icon danger">₺</div>
+          <div><div class="lbl">Tedarikçi Borcu</div><div class="num" id="statTedarikciBorcu">—</div></div>
+        </div>
+        <div class="stock-stat-card">
+          <div class="stock-stat-icon warn">!</div>
+          <div><div class="lbl">Kritik Stok</div><div class="num" id="statKritikStok">—</div></div>
+        </div>
+        <div class="stock-stat-card">
+          <div class="stock-stat-icon danger">⏱</div>
+          <div><div class="lbl">Vadesi Geçen</div><div class="num" id="statVadesiGecen">—</div></div>
+        </div>
+      </div>
+
+      <div class="stock-panel">
+        <h3>30 Günlük Nakit Akışı</h3>
+        <div class="sub">Tahsilat vs Ödeme</div>
+        <div class="stock-chart-wrap"><canvas id="cashFlowChart"></canvas></div>
+      </div>
+
+      <div class="stock-panel-grid">
+        <div class="stock-panel" style="margin-bottom:0;">
+          <h3>Kritik Stok Uyarıları</h3>
+          <div class="sub">Kritik seviyenin altındaki ürünler</div>
+          <div class="stock-table-wrap">
+            <table class="stock-table">
+              <thead><tr><th>Kod</th><th>Ad</th><th class="num">Mevcut</th><th class="num">Kritik</th></tr></thead>
+              <tbody id="criticalStockBody"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="stock-panel" style="margin-bottom:0;">
+          <h3>Özet</h3>
+          <div class="sub">&nbsp;</div>
+          <div class="stock-table-wrap">
+            <table class="stock-table">
+              <tbody>
+                <tr><td>Toplam Ürün</td><td class="num" id="sumProducts">—</td></tr>
+                <tr><td>Toplam Cari</td><td class="num" id="sumAccounts">—</td></tr>
+                <tr><td>Negatif Stok</td><td class="num" id="sumNegativeStock">—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/supabase-client.js"></script>
+  <script src="admin-auth.js"></script>
+  <script src="stock-nav.js"></script>
+  <script src="stock-common.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+  <script src="admin-stock-dashboard.js"></script>
+</body>
+</html>

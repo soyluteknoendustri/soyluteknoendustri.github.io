@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ürünler — Stok &amp; Cari</title>
+  <link rel="icon" type="image/png" href="../logo.png" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="admin.css" />
+  <link rel="stylesheet" href="stock.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body class="admin-body" data-stock-page="products">
+
+  <div class="admin-topbar">
+    <a href="stock-dashboard.html" class="brand">
+      <img src="../logo.png" alt="Logo" style="height:36px;" />
+      <span class="brand-text"><span class="brand-main" style="font-size:.9rem;">STOK &amp; CARİ</span></span>
+    </a>
+    <nav class="admin-topbar-nav">
+      <a href="dashboard.html">← Admin Panel</a>
+    </nav>
+    <button class="admin-logout" id="logoutBtn">Çıkış Yap</button>
+  </div>
+
+  <div class="stock-shell">
+    <aside class="stock-sidebar" id="stockSidebar"></aside>
+    <main class="stock-content">
+      <div class="stock-content-header">
+        <div>
+          <h2>Ürünler</h2>
+          <p>Stok kartları ve fiyat bilgileri</p>
+        </div>
+        <div class="stock-content-actions">
+          <button class="btn-outline" id="exportBtn">⬇ Excel</button>
+          <button class="btn-small" id="newProductBtn">+ Yeni Ürün</button>
+        </div>
+      </div>
+
+      <div class="stock-search"><input type="text" id="searchInput" placeholder="Kod veya ad ara..." /></div>
+
+      <div class="stock-table-wrap">
+        <table class="stock-table">
+          <thead>
+            <tr>
+              <th>Kod</th><th>Ad</th><th>Ambalaj</th>
+              <th class="num">Mevcut Stok</th><th class="num">Kritik</th>
+              <th class="num">Birim Fiyat</th><th class="num">KDV</th>
+            </tr>
+          </thead>
+          <tbody id="productBody"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <dialog id="productDialog" class="stock-modal">
+    <div class="stock-modal-head">
+      <h3 id="productDialogTitle">Yeni Ürün</h3>
+      <button type="button" onclick="closeDialog('productDialog')">✕</button>
+    </div>
+    <div class="stock-modal-body">
+      <div class="stock-form-row">
+        <div class="form-group"><label>Kod</label><input type="text" id="f_kod" /></div>
+        <div class="form-group"><label>Ambalaj</label><input type="text" id="f_ambalaj" placeholder="Teneke / Bidon / Varil / Tüp" /></div>
+      </div>
+      <div class="form-group"><label>Ad</label><input type="text" id="f_ad" /></div>
+      <div class="stock-form-row cols-3">
+        <div class="form-group"><label>Kritik Stok</label><input type="number" id="f_kritik" value="0" /></div>
+        <div class="form-group"><label>Birim Fiyat</label><input type="number" step="0.01" id="f_fiyat" value="0" /></div>
+        <div class="form-group"><label>KDV %</label><input type="number" id="f_kdv" value="20" /></div>
+      </div>
+      <div class="form-group checkbox-row"><input type="checkbox" id="f_aktif" checked /><label>Aktif</label></div>
+      <div class="status-msg" id="productStatusMsg"></div>
+    </div>
+    <div class="stock-modal-actions">
+      <button type="button" class="btn-danger" id="deleteProductBtn" style="display:none;">Sil</button>
+      <button type="button" class="btn-outline" onclick="closeDialog('productDialog')">Vazgeç</button>
+      <button type="button" class="btn-primary" id="saveProductBtn">Kaydet</button>
+    </div>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/supabase-client.js"></script>
+  <script src="admin-auth.js"></script>
+  <script src="stock-nav.js"></script>
+  <script src="stock-common.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="admin-stock-products.js"></script>
+</body>
+</html>

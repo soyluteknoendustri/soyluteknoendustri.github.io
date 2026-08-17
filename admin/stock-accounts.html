@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cariler — Stok &amp; Cari</title>
+  <link rel="icon" type="image/png" href="../logo.png" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="admin.css" />
+  <link rel="stylesheet" href="stock.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body class="admin-body" data-stock-page="accounts">
+
+  <div class="admin-topbar">
+    <a href="stock-dashboard.html" class="brand">
+      <img src="../logo.png" alt="Logo" style="height:36px;" />
+      <span class="brand-text"><span class="brand-main" style="font-size:.9rem;">STOK &amp; CARİ</span></span>
+    </a>
+    <nav class="admin-topbar-nav">
+      <a href="dashboard.html">← Admin Panel</a>
+    </nav>
+    <button class="admin-logout" id="logoutBtn">Çıkış Yap</button>
+  </div>
+
+  <div class="stock-shell">
+    <aside class="stock-sidebar" id="stockSidebar"></aside>
+    <main class="stock-content">
+      <div class="stock-content-header">
+        <div>
+          <h2>Cariler</h2>
+          <p>Müşteri ve tedarikçi hesapları</p>
+        </div>
+        <div class="stock-content-actions">
+          <button class="btn-outline" id="exportBtn">⬇ Excel</button>
+          <button class="btn-outline" id="bulkEditBtn">✎ Toplu Düzenle</button>
+          <button class="btn-small" id="newAccountBtn">+ Yeni Cari</button>
+        </div>
+      </div>
+
+      <div class="stock-tabs" id="accountTabs">
+        <button data-tip="all" class="active">Tümü</button>
+        <button data-tip="musteri">Müşteriler</button>
+        <button data-tip="tedarikci">Tedarikçiler</button>
+      </div>
+      <div class="stock-search"><input type="text" id="searchInput" placeholder="Ara..." /></div>
+
+      <div class="stock-table-wrap">
+        <table class="stock-table">
+          <thead>
+            <tr><th>Kod</th><th>Ünvan</th><th>Tip</th><th>Telefon</th><th class="num">Bakiye</th><th>Durum</th><th></th></tr>
+          </thead>
+          <tbody id="accountBody"></tbody>
+        </table>
+      </div>
+
+      <div id="bulkEditBar" style="display:none; margin-top:16px; text-align:right;">
+        <button class="btn-primary" id="bulkSaveBtn">Toplu Kaydet</button>
+      </div>
+    </main>
+  </div>
+
+  <dialog id="accountDialog" class="stock-modal">
+    <div class="stock-modal-head">
+      <h3 id="accountDialogTitle">Yeni Cari</h3>
+      <button type="button" onclick="closeDialog('accountDialog')">✕</button>
+    </div>
+    <div class="stock-modal-body">
+      <div class="stock-form-row">
+        <div class="form-group"><label>Kod</label><input type="text" id="a_kod" /></div>
+        <div class="form-group">
+          <label>Tip</label>
+          <select id="a_tip"><option value="musteri">Müşteri</option><option value="tedarikci">Tedarikçi</option></select>
+        </div>
+      </div>
+      <div class="form-group"><label>Ünvan</label><input type="text" id="a_unvan" /></div>
+      <div class="stock-form-row">
+        <div class="form-group"><label>Telefon</label><input type="text" id="a_telefon" /></div>
+        <div class="form-group"><label>E-posta</label><input type="email" id="a_email" /></div>
+      </div>
+      <div class="stock-form-row">
+        <div class="form-group"><label>VKN/TCKN</label><input type="text" id="a_vkn" /></div>
+        <div class="form-group checkbox-row" style="margin-top:26px;"><input type="checkbox" id="a_aktif" checked /><label>Aktif</label></div>
+      </div>
+      <div class="form-group"><label>Adres</label><textarea id="a_adres" rows="2"></textarea></div>
+      <div class="status-msg" id="accountStatusMsg"></div>
+    </div>
+    <div class="stock-modal-actions">
+      <button type="button" class="btn-danger" id="deleteAccountBtn" style="display:none;">Sil</button>
+      <button type="button" class="btn-outline" onclick="closeDialog('accountDialog')">Vazgeç</button>
+      <button type="button" class="btn-primary" id="saveAccountBtn">Kaydet</button>
+    </div>
+  </dialog>
+
+  <dialog id="statementDialog" class="stock-modal" style="width:min(760px,94vw);">
+    <div class="stock-modal-head">
+      <h3 id="statementTitle">Ekstre</h3>
+      <button type="button" onclick="closeDialog('statementDialog')">✕</button>
+    </div>
+    <div class="stock-modal-body">
+      <div class="stock-table-wrap">
+        <table class="stock-table">
+          <thead><tr><th>Tarih</th><th>Tip</th><th>Açıklama</th><th class="num">Tutar</th><th class="num">Bakiye</th></tr></thead>
+          <tbody id="statementBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/supabase-client.js"></script>
+  <script src="admin-auth.js"></script>
+  <script src="stock-nav.js"></script>
+  <script src="stock-common.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="admin-stock-accounts.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ayarlar — Stok &amp; Cari</title>
+  <link rel="icon" type="image/png" href="../logo.png" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="admin.css" />
+  <link rel="stylesheet" href="stock.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body class="admin-body" data-stock-page="settings">
+
+  <div class="admin-topbar">
+    <a href="stock-dashboard.html" class="brand">
+      <img src="../logo.png" alt="Logo" style="height:36px;" />
+      <span class="brand-text"><span class="brand-main" style="font-size:.9rem;">STOK &amp; CARİ</span></span>
+    </a>
+    <nav class="admin-topbar-nav">
+      <a href="dashboard.html">← Admin Panel</a>
+    </nav>
+    <button class="admin-logout" id="logoutBtn">Çıkış Yap</button>
+  </div>
+
+  <div class="stock-shell">
+    <aside class="stock-sidebar" id="stockSidebar"></aside>
+    <main class="stock-content">
+      <div class="stock-content-header">
+        <div>
+          <h2>Ayarlar</h2>
+          <p>Şirket bilgileri ve WhatsApp mesaj imzası</p>
+        </div>
+      </div>
+
+      <div class="stock-panel">
+        <h3>Şirket Logosu</h3>
+        <div class="sub">Sol menüde ve raporların üzerinde görünecek. PNG, JPG, SVG veya WEBP · maksimum 500 KB.</div>
+        <div style="display:flex; align-items:center; gap:16px;">
+          <img id="logoPreview" src="" alt="Logo" style="width:72px; height:72px; object-fit:contain; border:1px solid var(--border); border-radius:10px; display:none;" />
+          <input type="file" id="logoInput" accept="image/*" />
+          <button type="button" class="btn-outline" id="removeLogoBtn">Kaldır</button>
+        </div>
+      </div>
+
+      <div class="stock-panel">
+        <h3>Şirket Bilgileri</h3>
+        <div class="form-group"><label>Şirket Ünvanı</label><input type="text" id="s_unvan" /></div>
+        <div class="stock-form-row">
+          <div class="form-group"><label>VKN / TCKN</label><input type="text" id="s_vkn" /></div>
+          <div class="form-group"><label>Vergi Dairesi / Telefon</label><input type="text" id="s_vd_tel" placeholder="Sabit telefon" /></div>
+        </div>
+        <div class="form-group"><label>Adres</label><textarea id="s_adres" rows="2"></textarea></div>
+        <div class="form-group"><label>E-posta</label><input type="email" id="s_eposta" /></div>
+      </div>
+
+      <div class="stock-panel">
+        <h3>WhatsApp Gönderim</h3>
+        <div class="stock-form-row">
+          <div class="form-group">
+            <label>WhatsApp Numaranız (gönderen)</label>
+            <input type="text" id="s_whatsapp" />
+            <div class="sub" style="margin:6px 0 0;">Bu numara müşterinize gönderilen hatırlatma mesajlarının imzasında görünür. Mesajı sizin telefonunuzdaki WhatsApp gönderir.</div>
+          </div>
+          <div class="form-group"><label>İmza / Ek Metin</label><textarea id="s_imza" rows="3"></textarea></div>
+        </div>
+      </div>
+
+      <div class="stock-panel">
+        <h3>Banka Bilgileri (Opsiyonel)</h3>
+        <div class="stock-form-row">
+          <div class="form-group"><label>Banka Adı</label><input type="text" id="s_banka" /></div>
+          <div class="form-group"><label>IBAN</label><input type="text" id="s_iban" /></div>
+        </div>
+        <div class="sub">IBAN girerseniz WhatsApp hatırlatma mesajlarında otomatik olarak eklenir.</div>
+      </div>
+
+      <div style="text-align:right;">
+        <button class="btn-primary" id="saveSettingsBtn">Kaydet</button>
+      </div>
+      <div class="status-msg" id="settingsStatusMsg" style="text-align:right; margin-top:10px;"></div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/supabase-client.js"></script>
+  <script src="admin-auth.js"></script>
+  <script src="stock-nav.js"></script>
+  <script src="stock-common.js"></script>
+  <script src="admin-stock-settings.js"></script>
+</body>
+</html>

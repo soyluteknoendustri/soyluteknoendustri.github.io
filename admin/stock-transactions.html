@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>İşlemler — Stok &amp; Cari</title>
+  <link rel="icon" type="image/png" href="../logo.png" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="admin.css" />
+  <link rel="stylesheet" href="stock.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body class="admin-body" data-stock-page="transactions">
+
+  <div class="admin-topbar">
+    <a href="stock-dashboard.html" class="brand">
+      <img src="../logo.png" alt="Logo" style="height:36px;" />
+      <span class="brand-text"><span class="brand-main" style="font-size:.9rem;">STOK &amp; CARİ</span></span>
+    </a>
+    <nav class="admin-topbar-nav">
+      <a href="dashboard.html">← Admin Panel</a>
+    </nav>
+    <button class="admin-logout" id="logoutBtn">Çıkış Yap</button>
+  </div>
+
+  <div class="stock-shell">
+    <aside class="stock-sidebar" id="stockSidebar"></aside>
+    <main class="stock-content">
+      <div class="stock-content-header">
+        <div>
+          <h2>İşlemler</h2>
+          <p>Alış, satış, tahsilat, ödeme, iade ve virmanlar</p>
+        </div>
+        <div class="stock-content-actions">
+          <button class="btn-small" id="newTxBtn">+ Yeni İşlem</button>
+        </div>
+      </div>
+
+      <div class="stock-tabs" id="txTabs">
+        <button data-tip="all" class="active">Tümü</button>
+        <button data-tip="alis">Alış</button>
+        <button data-tip="satis">Satış</button>
+        <button data-tip="tahsilat">Tahsilat</button>
+        <button data-tip="odeme">Ödeme</button>
+        <button data-tip="alis_iade">Alış İade</button>
+        <button data-tip="satis_iade">Satış İade</button>
+        <button data-tip="virman">Virman</button>
+      </div>
+
+      <div class="stock-table-wrap">
+        <table class="stock-table">
+          <thead>
+            <tr><th>Tarih</th><th>Tip</th><th>Cari</th><th>Ürün</th><th class="num">Miktar</th><th class="num">KDV</th><th class="num">Toplam</th><th></th></tr>
+          </thead>
+          <tbody id="txBody"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <dialog id="txDialog" class="stock-modal">
+    <div class="stock-modal-head">
+      <h3>Yeni İşlem</h3>
+      <button type="button" onclick="closeDialog('txDialog')">✕</button>
+    </div>
+    <div class="stock-modal-body">
+      <div class="form-group">
+        <label>Tip</label>
+        <select id="t_tip">
+          <option value="alis">Alış</option>
+          <option value="satis">Satış</option>
+          <option value="tahsilat">Tahsilat</option>
+          <option value="odeme">Ödeme</option>
+          <option value="alis_iade">Alış İade</option>
+          <option value="satis_iade">Satış İade</option>
+          <option value="virman">Virman</option>
+        </select>
+      </div>
+      <div class="stock-form-row">
+        <div class="form-group"><label id="t_cari_label">Cari</label><select id="t_cari"></select></div>
+        <div class="form-group" id="t_hedef_cari_group" style="display:none;"><label>Hedef Cari</label><select id="t_hedef_cari"></select></div>
+      </div>
+      <div class="form-group" id="t_urun_group">
+        <label>Ürün</label><select id="t_urun"></select>
+      </div>
+      <div class="stock-form-row cols-3" id="t_miktar_group">
+        <div class="form-group"><label>Miktar</label><input type="number" id="t_miktar" value="1" /></div>
+        <div class="form-group"><label>Birim Fiyat</label><input type="number" step="0.01" id="t_birim_fiyat" value="0" /></div>
+        <div class="form-group"><label>KDV %</label><input type="number" id="t_kdv" value="20" /></div>
+      </div>
+      <div class="form-group" id="t_tutar_group" style="display:none;">
+        <label>Tutar</label><input type="number" step="0.01" id="t_tutar" value="0" />
+      </div>
+      <div class="form-group checkbox-row" id="t_fatura_edilmeyen_group">
+        <input type="checkbox" id="t_fatura_edilmeyen" /><label>Fatura edilmeyen (numune/deneme) stok hareketi</label>
+      </div>
+      <div class="stock-form-row">
+        <div class="form-group"><label>Tarih</label><input type="date" id="t_tarih" /></div>
+        <div class="form-group"><label>Vade Tarihi</label><input type="date" id="t_vade" /></div>
+      </div>
+      <div class="stock-form-row">
+        <div class="form-group"><label>Fatura No</label><input type="text" id="t_fatura_no" /></div>
+        <div class="form-group"><label>Açıklama</label><input type="text" id="t_aciklama" /></div>
+      </div>
+      <div class="status-msg" id="txStatusMsg"></div>
+    </div>
+    <div class="stock-modal-actions">
+      <button type="button" class="btn-outline" onclick="closeDialog('txDialog')">Vazgeç</button>
+      <button type="button" class="btn-primary" id="saveTxBtn">Kaydet</button>
+    </div>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/supabase-client.js"></script>
+  <script src="admin-auth.js"></script>
+  <script src="stock-nav.js"></script>
+  <script src="stock-common.js"></script>
+  <script src="admin-stock-transactions.js"></script>
+</body>
+</html>

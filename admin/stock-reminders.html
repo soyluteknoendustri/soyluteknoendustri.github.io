@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vade Hatırlatma — Stok &amp; Cari</title>
+  <link rel="icon" type="image/png" href="../logo.png" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="admin.css" />
+  <link rel="stylesheet" href="stock.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body class="admin-body" data-stock-page="reminders">
+
+  <div class="admin-topbar">
+    <a href="stock-dashboard.html" class="brand">
+      <img src="../logo.png" alt="Logo" style="height:36px;" />
+      <span class="brand-text"><span class="brand-main" style="font-size:.9rem;">STOK &amp; CARİ</span></span>
+    </a>
+    <nav class="admin-topbar-nav">
+      <a href="dashboard.html">← Admin Panel</a>
+    </nav>
+    <button class="admin-logout" id="logoutBtn">Çıkış Yap</button>
+  </div>
+
+  <div class="stock-shell">
+    <aside class="stock-sidebar" id="stockSidebar"></aside>
+    <main class="stock-content">
+      <div class="stock-content-header">
+        <div>
+          <h2>Vade Hatırlatma</h2>
+          <p>Sayfa açıldığında güncel liste hesaplanır. WhatsApp'ı tek tıkla açın.</p>
+        </div>
+        <div class="stock-content-actions">
+          <button class="btn-outline" id="refreshBtn">↻ Şimdi Yenile</button>
+        </div>
+      </div>
+
+      <div class="stock-stats">
+        <div class="stock-stat-card">
+          <div class="stock-stat-icon warn">⏱</div>
+          <div><div class="lbl">Bugün Vadesi Geçen Cari</div><div class="num" id="statToday">—</div></div>
+        </div>
+        <div class="stock-stat-card">
+          <div class="stock-stat-icon">Σ</div>
+          <div><div class="lbl">Bekleyen Toplam Tutar</div><div class="num" id="statTotal">—</div></div>
+        </div>
+      </div>
+
+      <div class="stock-tabs" id="reminderTabs">
+        <button data-mode="today" class="active">Bugünün Kuyruğu</button>
+        <button data-mode="all">Tüm Gecikmiş Cariler</button>
+      </div>
+
+      <div class="stock-table-wrap">
+        <table class="stock-table">
+          <thead><tr><th>Cari</th><th>Telefon</th><th class="num">Fatura</th><th class="num">En Eski</th><th class="num">Toplam</th><th></th></tr></thead>
+          <tbody id="reminderBody"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/supabase-client.js"></script>
+  <script src="admin-auth.js"></script>
+  <script src="stock-nav.js"></script>
+  <script src="stock-common.js"></script>
+  <script src="admin-stock-reminders.js"></script>
+</body>
+</html>
