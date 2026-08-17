@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raporlar — Stok &amp; Cari</title>
+  <link rel="icon" type="image/png" href="../logo.png" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="admin.css" />
+  <link rel="stylesheet" href="stock.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body class="admin-body" data-stock-page="reports">
+
+  <div class="admin-topbar">
+    <a href="stock-dashboard.html" class="brand">
+      <img src="../logo.png" alt="Logo" style="height:36px;" />
+      <span class="brand-text"><span class="brand-main" style="font-size:.9rem;">STOK &amp; CARİ</span></span>
+    </a>
+    <nav class="admin-topbar-nav">
+      <a href="dashboard.html">← Admin Panel</a>
+    </nav>
+    <button class="admin-logout" id="logoutBtn">Çıkış Yap</button>
+  </div>
+
+  <div class="stock-shell">
+    <aside class="stock-sidebar" id="stockSidebar"></aside>
+    <main class="stock-content">
+      <div class="stock-content-header">
+        <div>
+          <h2>Raporlar</h2>
+          <p>Yaşlandırma ve kritik stok</p>
+        </div>
+      </div>
+
+      <div class="stock-tabs" id="reportTabs">
+        <button data-tab="aging" class="active">Vade Yaşlandırma</button>
+        <button data-tab="critical">Kritik Stok</button>
+      </div>
+
+      <div id="agingTab">
+        <div class="stock-stats">
+          <div class="stock-stat-card"><div><div class="lbl">0-30 Gün</div><div class="num" id="bucket030">—</div></div></div>
+          <div class="stock-stat-card"><div><div class="lbl">31-60 Gün</div><div class="num" id="bucket3160">—</div></div></div>
+          <div class="stock-stat-card"><div><div class="lbl">61-90 Gün</div><div class="num" id="bucket6190">—</div></div></div>
+          <div class="stock-stat-card"><div><div class="lbl">90+ Gün</div><div class="num" id="bucket90">—</div></div></div>
+          <div class="stock-stat-card"><div><div class="lbl">Vadesi Gelmemiş</div><div class="num" id="bucketFuture">—</div></div></div>
+        </div>
+        <div class="stock-panel">
+          <h3>Vadesi Geçen Detay</h3>
+          <div class="stock-table-wrap">
+            <table class="stock-table">
+              <thead><tr><th>Vade</th><th class="num">Gecikme</th><th>Cari</th><th>Açıklama</th><th class="num">Tutar</th></tr></thead>
+              <tbody id="agingBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div id="criticalTab" style="display:none;">
+        <div class="stock-table-wrap">
+          <table class="stock-table">
+            <thead><tr><th>Kod</th><th>Ad</th><th class="num">Mevcut</th><th class="num">Kritik</th></tr></thead>
+            <tbody id="criticalBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/supabase-client.js"></script>
+  <script src="admin-auth.js"></script>
+  <script src="stock-nav.js"></script>
+  <script src="stock-common.js"></script>
+  <script src="admin-stock-reports.js"></script>
+</body>
+</html>

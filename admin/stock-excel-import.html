@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Excel Aktarımı — Stok &amp; Cari</title>
+  <link rel="icon" type="image/png" href="../logo.png" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="admin.css" />
+  <link rel="stylesheet" href="stock.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body class="admin-body" data-stock-page="import">
+
+  <div class="admin-topbar">
+    <a href="stock-dashboard.html" class="brand">
+      <img src="../logo.png" alt="Logo" style="height:36px;" />
+      <span class="brand-text"><span class="brand-main" style="font-size:.9rem;">STOK &amp; CARİ</span></span>
+    </a>
+    <nav class="admin-topbar-nav">
+      <a href="dashboard.html">← Admin Panel</a>
+    </nav>
+    <button class="admin-logout" id="logoutBtn">Çıkış Yap</button>
+  </div>
+
+  <div class="stock-shell">
+    <aside class="stock-sidebar" id="stockSidebar"></aside>
+    <main class="stock-content">
+      <div class="stock-content-header">
+        <div>
+          <h2>Excel Aktarımı</h2>
+          <p>Stok, cari veya cari hareket verilerini içe aktarın</p>
+        </div>
+      </div>
+
+      <div class="stock-steps">
+        <div class="stock-step active" id="step1indicator"><span class="n">1</span> Yükle</div>
+        <div class="stock-step-sep"></div>
+        <div class="stock-step" id="step2indicator"><span class="n">2</span> Eşle &amp; Önizle</div>
+        <div class="stock-step-sep"></div>
+        <div class="stock-step" id="step3indicator"><span class="n">3</span> İçe Aktar</div>
+      </div>
+
+      <section id="step1" class="stock-panel">
+        <div class="stock-dropzone">
+          <div class="icon">⬆</div>
+          <h4>Excel dosyanızı seçin</h4>
+          <p>.xlsx, .xls</p>
+          <input type="file" id="fileInput" accept=".xlsx,.xls" style="display:none;" />
+          <button type="button" class="btn-primary" id="pickFileBtn">Dosya Seç</button>
+        </div>
+      </section>
+
+      <section id="step2" class="stock-panel" style="display:none;">
+        <div class="form-group">
+          <label>Hedef Tablo</label>
+          <select id="targetSelect">
+            <option value="products">Ürünler</option>
+            <option value="accounts">Cariler</option>
+            <option value="transactions">Cari Hareketleri</option>
+          </select>
+        </div>
+        <div id="mappingArea"></div>
+        <h4 style="margin:20px 0 10px;font-family:'Montserrat',sans-serif;color:var(--navy);">Önizleme (ilk 5 satır)</h4>
+        <div class="stock-table-wrap"><table class="stock-table"><thead id="previewHead"></thead><tbody id="previewBody"></tbody></table></div>
+        <div style="margin-top:20px; text-align:right;"><button class="btn-primary" id="toStep3Btn">Devam Et →</button></div>
+      </section>
+
+      <section id="step3" class="stock-panel" style="display:none;">
+        <p id="importSummary" style="margin-bottom:16px; color:var(--text-muted);"></p>
+        <button class="btn-primary" id="runImportBtn">İçe Aktar</button>
+        <div class="status-msg" id="importStatusMsg" style="margin-top:14px;"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/supabase-client.js"></script>
+  <script src="admin-auth.js"></script>
+  <script src="stock-nav.js"></script>
+  <script src="stock-common.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="admin-stock-excel-import.js"></script>
+</body>
+</html>

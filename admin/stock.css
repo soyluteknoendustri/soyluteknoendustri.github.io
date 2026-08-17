@@ -1,0 +1,192 @@
+/* ===================================================
+   STOK & CARİ YÖNETİMİ — admin.css'in üstüne eklenir,
+   style.css'in :root değişkenlerine bağımlıdır.
+   =================================================== */
+
+:root {
+  --stock-green: #1e8c4f;
+  --stock-red: #c0392b;
+  --stock-amber: #b8860b;
+}
+
+/* ---- Kabuk: sol sidebar + içerik ---- */
+.stock-shell { display: flex; align-items: flex-start; }
+
+.stock-sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: var(--white);
+  border-right: 1px solid var(--border);
+  min-height: calc(100vh - 64px);
+  padding: 20px 0;
+  position: sticky;
+  top: 64px;
+}
+.stock-sidebar nav { display: flex; flex-direction: column; }
+.stock-sidebar a {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: .85rem;
+  color: var(--text-muted);
+  padding: 11px 24px;
+  border-left: 3px solid transparent;
+}
+.stock-sidebar a:hover { background: var(--bg); color: var(--navy); }
+.stock-sidebar a.active {
+  background: rgba(224,120,32,.08);
+  border-left-color: var(--orange);
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.stock-content { flex: 1; min-width: 0; padding: 32px 32px 80px; }
+.stock-content-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; }
+.stock-content-header h2 { font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--navy); font-size: 1.4rem; }
+.stock-content-header p { font-size: .85rem; color: var(--text-muted); margin-top: 4px; }
+.stock-content-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+@media (max-width: 900px) {
+  .stock-shell { flex-direction: column; }
+  .stock-sidebar { width: 100%; position: static; min-height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+  .stock-sidebar nav { flex-direction: row; flex-wrap: wrap; }
+  .stock-sidebar a { border-left: none; border-bottom: 3px solid transparent; }
+  .stock-sidebar a.active { border-bottom-color: var(--orange); }
+}
+
+/* ---- Butonlar (mevcut btn-small/btn-primary/btn-danger'ı tamamlar) ---- */
+.btn-outline {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: .78rem;
+  color: var(--navy);
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  padding: 9px 16px;
+  background: var(--white);
+}
+.btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+
+/* ---- Stat kartları ---- */
+.stock-stats { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 24px; }
+.stock-stat-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 22px;
+  flex: 1;
+  min-width: 190px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.stock-stat-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; flex-shrink: 0;
+  background: rgba(224,120,32,.1); color: var(--orange);
+}
+.stock-stat-icon.danger { background: rgba(192,57,43,.1); color: var(--stock-red); }
+.stock-stat-icon.warn { background: rgba(184,134,11,.1); color: var(--stock-amber); }
+.stock-stat-icon.ok { background: rgba(30,140,79,.1); color: var(--stock-green); }
+.stock-stat-card .lbl { font-size: .72rem; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; color: var(--text-muted); }
+.stock-stat-card .num { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.35rem; color: var(--navy); }
+
+/* ---- Panel / kart konteyner ---- */
+.stock-panel { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 22px; margin-bottom: 22px; }
+.stock-panel h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: .95rem; color: var(--navy); margin-bottom: 4px; }
+.stock-panel .sub { font-size: .78rem; color: var(--text-muted); margin-bottom: 16px; }
+.stock-panel-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 20px; align-items: start; }
+@media (max-width: 1100px) { .stock-panel-grid { grid-template-columns: 1fr; } }
+
+/* ---- Arama ---- */
+.stock-search { margin-bottom: 16px; }
+.stock-search input {
+  width: 100%; padding: 11px 14px; border-radius: 8px;
+  border: 1.5px solid var(--border); font-family: 'Inter', sans-serif; font-size: .85rem;
+}
+
+/* ---- Sekmeler ---- */
+.stock-tabs { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; background: var(--bg); padding: 4px; border-radius: 8px; width: fit-content; }
+.stock-tabs button {
+  font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: .78rem;
+  color: var(--text-muted); padding: 8px 16px; border-radius: 6px;
+}
+.stock-tabs button.active { background: var(--white); color: var(--navy); box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+
+/* ---- Tablo ---- */
+.stock-table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; background: var(--white); }
+table.stock-table { width: 100%; border-collapse: collapse; font-size: .83rem; min-width: 640px; }
+table.stock-table thead th {
+  text-align: left; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: .68rem;
+  letter-spacing: .04em; text-transform: uppercase; color: var(--text-muted);
+  padding: 12px 16px; border-bottom: 1px solid var(--border); white-space: nowrap;
+}
+table.stock-table tbody td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: middle; }
+table.stock-table tbody tr:last-child td { border-bottom: none; }
+table.stock-table tbody tr.clickable { cursor: pointer; }
+table.stock-table tbody tr.clickable:hover { background: var(--bg); }
+table.stock-table td.num, table.stock-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
+table.stock-table .row-actions { display: flex; gap: 8px; justify-content: flex-end; }
+table.stock-table .icon-btn { color: var(--text-muted); padding: 4px; border-radius: 6px; }
+table.stock-table .icon-btn:hover { color: var(--stock-red); background: rgba(192,57,43,.08); }
+.stock-empty { padding: 40px 16px; text-align: center; color: var(--text-muted); font-size: .85rem; }
+
+/* ---- Rozetler ---- */
+.badge { display: inline-flex; align-items: center; gap: 5px; font-size: .72rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
+.badge.red { background: rgba(192,57,43,.1); color: var(--stock-red); }
+.badge.green { background: rgba(30,140,79,.1); color: var(--stock-green); }
+.badge.amber { background: rgba(184,134,11,.1); color: var(--stock-amber); }
+.badge.gray { background: rgba(90,110,138,.1); color: var(--text-muted); }
+.badge.navy { background: rgba(19,30,48,.08); color: var(--navy); }
+.amount-pos { color: var(--stock-red); font-weight: 700; }
+.amount-neg { color: var(--stock-green); font-weight: 700; }
+
+/* ---- Modal (native <dialog>) ---- */
+dialog.stock-modal {
+  border: none; border-radius: 14px; padding: 0; width: min(640px, 92vw);
+  max-height: 85vh;
+  box-shadow: 0 24px 70px rgba(0,0,0,.35);
+  position: fixed; inset: 0; margin: auto;
+}
+dialog.stock-modal::backdrop { background: rgba(10,16,28,.55); }
+.stock-modal-head { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; border-bottom: 1px solid var(--border); }
+.stock-modal-head h3 { font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--navy); font-size: 1.05rem; }
+.stock-modal-head button { color: var(--text-muted); font-size: 1.2rem; line-height: 1; }
+.stock-modal-body { padding: 22px 24px; max-height: 70vh; overflow-y: auto; overflow-x: hidden; }
+.stock-modal-actions { display: flex; justify-content: flex-end; gap: 10px; padding: 16px 24px; border-top: 1px solid var(--border); }
+
+/* ---- Form yardımcıları ---- */
+.stock-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; min-width: 0; }
+.stock-form-row.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+.stock-form-row > .form-group { min-width: 0; }
+@media (max-width: 560px) { .stock-form-row, .stock-form-row.cols-3 { grid-template-columns: 1fr; } }
+.checkbox-row { display: flex; align-items: center; gap: 8px; }
+.checkbox-row input { width: auto; }
+
+/* ---- Grafik konteyneri ---- */
+.stock-chart-wrap { position: relative; height: 280px; }
+
+/* ---- WhatsApp buton ---- */
+.btn-whatsapp {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #25d366; color: var(--white); font-family: 'Montserrat', sans-serif;
+  font-weight: 700; font-size: .75rem; padding: 7px 14px; border-radius: 6px;
+}
+.btn-whatsapp:hover { background: #1fb958; }
+
+/* ---- Excel import stepper ---- */
+.stock-steps { display: flex; align-items: center; gap: 10px; margin-bottom: 24px; }
+.stock-step { display: flex; align-items: center; gap: 8px; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: .8rem; color: var(--text-muted); }
+.stock-step .n { width: 26px; height: 26px; border-radius: 50%; background: var(--bg); color: var(--text-muted); display: flex; align-items: center; justify-content: center; font-size: .78rem; }
+.stock-step.active { color: var(--navy); }
+.stock-step.active .n { background: var(--orange); color: var(--white); }
+.stock-step.done .n { background: var(--stock-green); color: var(--white); }
+.stock-step-sep { width: 40px; height: 1px; background: var(--border); }
+
+.stock-dropzone {
+  border: 2px dashed var(--border); border-radius: 12px; padding: 60px 20px;
+  text-align: center; background: var(--white);
+}
+.stock-dropzone .icon { font-size: 2rem; color: var(--text-muted); margin-bottom: 12px; }
+.stock-dropzone h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+.stock-dropzone p { font-size: .8rem; color: var(--text-muted); margin-bottom: 16px; }
